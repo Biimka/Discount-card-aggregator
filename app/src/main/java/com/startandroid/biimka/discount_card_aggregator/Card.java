@@ -53,7 +53,7 @@ public class Card {
         return contentBarcode;
     }
 
-    public void setContentBarcode(int contentBarcode) {
+    public void setContentBarcode(long contentBarcode) {
         this.contentBarcode = contentBarcode;
     }
 
