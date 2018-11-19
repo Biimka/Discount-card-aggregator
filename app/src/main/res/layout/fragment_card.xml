@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="0dp">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNameCard"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNameCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/cardName"
+        app:layout_constraintBottom_toTopOf="@+id/scrollViewCard"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollViewCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateSave"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameCard">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/frontSideCard"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/imageViewFrontSideCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/backSideCard"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/imageViewBackSideCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/textViewBarcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/barcode"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/imageViewBarcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/textViewBarcodeFormat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textViewBarcodeContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonCreateSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:enabled="false"
+        android:text="@string/createCard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
