@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -19,6 +18,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.arello-mobile:moxy-android:1.1.1'
+    implementation 'com.arello-mobile:moxy:1.1.1'
     def nav_version = "1.0.0-alpha07"
     implementation "android.arch.navigation:navigation-fragment:$nav_version"
     implementation "android.arch.navigation:navigation-ui:$nav_version"
