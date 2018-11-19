@@ -13,26 +13,14 @@
         <action
             android:id="@+id/action_fragmentCardList_to_fragmentCard"
             app:destination="@id/fragmentCard" />
-        <action
-            android:id="@+id/action_fragmentCardList_to_fragmentBarcode"
-            app:destination="@id/fragmentBarcode" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCard"
-        android:name="com.startandroid.biimka.discount_card_aggregator.CardFragment"
+        android:name="com.startandroid.biimka.discount_card_aggregator.card.CardFragment"
         android:label="fragmentCard"
         tools:layout="@layout/fragment_card">
         <action
             android:id="@+id/action_fragmentCard_to_fragmentCardList"
-            app:destination="@id/fragmentCardList" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragmentBarcode"
-        android:name="com.startandroid.biimka.discount_card_aggregator.BarcodeFragment"
-        android:label="fragmentBarcode"
-        tools:layout="@layout/fragment_barcode">
-        <action
-            android:id="@+id/action_fragmentBarcode_to_fragmentCardList"
             app:destination="@id/fragmentCardList" />
     </fragment>
 </navigation>
