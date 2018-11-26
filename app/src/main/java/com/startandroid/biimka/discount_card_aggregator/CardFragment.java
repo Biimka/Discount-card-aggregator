@@ -8,16 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Fragment3 extends Fragment {
+public class CardFragment extends Fragment {
 
-    public static Fragment3 newInstance() {
-        return new Fragment3();
+    public static CardFragment newInstance() {
+        return new CardFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment3, null);
+        final View rootView = inflater.inflate(R.layout.fragment_card, null);
         return rootView;
     }
 }

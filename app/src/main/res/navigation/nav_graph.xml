@@ -3,28 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragment1">
+    app:startDestination="@id/fragmentCardList">
 
     <fragment
-        android:id="@+id/fragment1"
-        android:name="com.startandroid.biimka.discount_card_aggregator.Fragment1"
+        android:id="@+id/fragmentCardList"
+        android:name="com.startandroid.biimka.discount_card_aggregator.CardListFragment"
         android:label="fragment1"
-        tools:layout="@layout/fragment1" >
+        tools:layout="@layout/fragment_cardlist">
         <action
             android:id="@+id/action_fragment1_to_fragment2"
-            app:destination="@id/fragment2" />
+            app:destination="@id/fragmentCard" />
         <action
             android:id="@+id/action_fragment1_to_fragment3"
-            app:destination="@id/fragment3" />
+            app:destination="@id/fragmentBarcode" />
     </fragment>
     <fragment
-        android:id="@+id/fragment2"
-        android:name="com.startandroid.biimka.discount_card_aggregator.Fragment2"
+        android:id="@+id/fragmentCard"
+        android:name="com.startandroid.biimka.discount_card_aggregator.CardFragment"
         android:label="fragment2"
-        tools:layout="@layout/fragment2" />
+        tools:layout="@layout/fragment_card">
+        <action
+            android:id="@+id/action_fragmentCard_to_fragmentCardList2"
+            app:destination="@id/fragmentCardList" />
+    </fragment>
     <fragment
-        android:id="@+id/fragment3"
-        android:name="com.startandroid.biimka.discount_card_aggregator.Fragment3"
+        android:id="@+id/fragmentBarcode"
+        android:name="com.startandroid.biimka.discount_card_aggregator.BarcodeFragment"
         android:label="fragment3"
-        tools:layout="@layout/fragment3" />
+        tools:layout="@layout/fragment_barcode">
+        <action
+            android:id="@+id/action_fragmentBarcode_to_fragmentCardList2"
+            app:destination="@id/fragmentCardList" />
+    </fragment>
 </navigation>
