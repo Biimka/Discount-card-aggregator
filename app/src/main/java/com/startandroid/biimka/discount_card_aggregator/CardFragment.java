@@ -12,15 +12,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
-import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-public class CardFragment extends MvpAppCompatFragment implements MyViewCardFragment {
+public class CardFragment extends MvpAppCompatFragment implements CardView {
     @InjectPresenter
-    MyPresenterCardFragment myPresenterFrag2;
+    CardPresenter mCardPresenter;
     private EditText editTextNameCard;
     private ImageView imageViewFrontSideCard;
     private ImageView imageViewBackSideCard;
@@ -43,7 +42,7 @@ public class CardFragment extends MvpAppCompatFragment implements MyViewCardFrag
         imageViewBackSideCard = rootView.findViewById(R.id.textViewBackSideCard);
         imageViewBarcode = rootView.findViewById(R.id.textViewBarcode);
         buttonCreateSave = rootView.findViewById(R.id.buttonCreateSave);
-        myPresenterFrag2.setCard();
+        mCardPresenter.setCard();
         return rootView;
     }
 
@@ -94,16 +93,4 @@ public class CardFragment extends MvpAppCompatFragment implements MyViewCardFrag
             }
         });
     }
-}
-
-interface MyViewCardFragment extends MvpView {
-    void setNameCard();
-
-    void onImageFrontClick();
-
-    void onImageBackClick();
-
-    void onBarcodeClick();
-
-    void onButtonCreateSaveClick();
 }
