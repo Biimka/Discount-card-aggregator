@@ -8,26 +8,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.arellomobile.mvp.MvpFragment;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-public class Fragment1 extends Fragment {
+public class CardListFragment extends MvpAppCompatFragment {
 
-    public static Fragment1 newInstance() {
-        return new Fragment1();
+    public static CardListFragment newInstance() {
+        return new CardListFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment1, null);
+        final View rootView = inflater.inflate(R.layout.fragment_cardlist, null);
 
         final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         (rootView.findViewById(R.id.addDiscountCardFAB)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.fragment2);
+                navController.navigate(R.id.fragmentCard);
             }
         });
 

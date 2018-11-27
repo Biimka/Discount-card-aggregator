@@ -8,16 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Fragment2 extends Fragment {
+import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.arellomobile.mvp.MvpFragment;
 
-    public static Fragment2 newInstance() {
-        return new Fragment2();
+public class BarcodeFragment extends MvpAppCompatFragment {
+
+    public static BarcodeFragment newInstance() {
+        return new BarcodeFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment2, null);
+        final View rootView = inflater.inflate(R.layout.fragment_barcode, null);
         return rootView;
     }
 }

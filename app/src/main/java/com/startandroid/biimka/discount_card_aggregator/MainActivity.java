@@ -3,7 +3,9 @@ package com.startandroid.biimka.discount_card_aggregator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.arellomobile.mvp.MvpAppCompatActivity;
+
+public class MainActivity extends MvpAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
