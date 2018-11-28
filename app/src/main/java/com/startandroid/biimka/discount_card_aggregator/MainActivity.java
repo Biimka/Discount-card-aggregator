@@ -1,6 +1,5 @@
 package com.startandroid.biimka.discount_card_aggregator;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
