@@ -14,10 +14,6 @@ import androidx.navigation.Navigation;
 
 public class CardListFragment extends MvpAppCompatFragment {
 
-    public static CardListFragment newInstance() {
-        return new CardListFragment();
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

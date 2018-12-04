@@ -2,7 +2,9 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="0dp">
+    android:layout_height="0dp"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
 
     <EditText
         android:id="@+id/editTextNameCard"
@@ -37,7 +39,7 @@
                 android:textSize="12sp" />
 
             <ImageView
-                android:id="@+id/textViewFrontSideCard"
+                android:id="@+id/imageViewFrontSideCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -51,7 +53,7 @@
                 android:textSize="12sp" />
 
             <ImageView
-                android:id="@+id/textViewBackSideCard"
+                android:id="@+id/imageViewBackSideCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -59,18 +61,29 @@
                 android:focusable="true" />
 
             <TextView
+                android:id="@+id/textViewBarcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/barcode"
                 android:textSize="12sp" />
 
             <ImageView
-                android:id="@+id/textViewBarcode"
+                android:id="@+id/imageViewBarcode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:clickable="true"
                 android:focusable="true" />
+
+            <TextView
+                android:id="@+id/textViewBarcodeFormat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textViewBarcodeContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>

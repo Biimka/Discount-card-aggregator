@@ -5,4 +5,7 @@
     <string name="frontSideCard">Нажмите на изображение, чтобы добавить/изменить фото лицевой стороны карты</string>
     <string name="backSideCard">Нажмите на изображение, чтобы добавить/изменить фото задней стороны карты</string>
     <string name="barcode">Нажмите на изображение, чтобы добавить/изменить штрих-код</string>
+    <string name="barcodeContent">Content: </string>
+    <string name="barcodeFormat">Format: </string>
+    <string name="barcodeNotScanned">Не удалось отсканировать штрих-код</string>
 </resources>
