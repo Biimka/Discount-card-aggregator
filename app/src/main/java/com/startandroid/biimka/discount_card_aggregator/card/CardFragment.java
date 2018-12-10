@@ -8,19 +8,23 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.startandroid.biimka.discount_card_aggregator.BaseFragment;
+import com.startandroid.biimka.discount_card_aggregator.DBHelper;
 import com.startandroid.biimka.discount_card_aggregator.FragmentIntentIntegrator;
 import com.startandroid.biimka.discount_card_aggregator.R;
 
@@ -29,7 +33,7 @@ import java.io.IOException;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-public class CardFragment extends MvpAppCompatFragment implements CardView {
+public class CardFragment extends BaseFragment implements CardView {
     @InjectPresenter
     CardPresenter mCardPresenter;
 
@@ -46,9 +50,11 @@ public class CardFragment extends MvpAppCompatFragment implements CardView {
     private TextView textViewFormatBarcode;
     private TextView textViewBarcodeContent;
 
+    private Button buttonCreateUpdate;
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_card, null);
 
         final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
@@ -62,9 +68,28 @@ public class CardFragment extends MvpAppCompatFragment implements CardView {
         textViewFormatBarcode = rootView.findViewById(R.id.textViewBarcodeFormat);
         textViewBarcodeContent = rootView.findViewById(R.id.textViewBarcodeContent);
 
+        buttonCreateUpdate = rootView.findViewById(R.id.buttonCreateSave);
+
         imageViewFrontSideCard.setImageResource(R.mipmap.picture);
         imageViewBackSideCard.setImageResource(R.mipmap.picture);
         imageViewBarcode.setImageResource(R.mipmap.barcode);
+
+        editTextNameCard.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                editTextNameCard.setSelection(s.toString().length());
+                buttonCreateUpdate.setEnabled(s.length() != 0);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         imageViewFrontSideCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,10 +112,10 @@ public class CardFragment extends MvpAppCompatFragment implements CardView {
             }
         });
 
-        (rootView.findViewById(R.id.buttonCreateSave)).setOnClickListener(new View.OnClickListener() {
+        buttonCreateUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCardPresenter.createUpdateCardDB();
+                mCardPresenter.createUpdateCard();
             }
         });
         return rootView;
@@ -144,7 +169,6 @@ public class CardFragment extends MvpAppCompatFragment implements CardView {
         } else {
             textViewFormatBarcode.setText(getString(R.string.barcodeNotScanned));
         }
-
     }
 
     @Override
@@ -160,6 +184,7 @@ public class CardFragment extends MvpAppCompatFragment implements CardView {
                         e.printStackTrace();
                     }
                     mCardPresenter.onFrontSideImageChoosen(bitmap);
+                    new DBHelper(getContext()).getBytes(bitmap);
                     break;
                 case REQUEST_CODE_BACK_IMAGE:
                     try {
@@ -168,6 +193,7 @@ public class CardFragment extends MvpAppCompatFragment implements CardView {
                         e.printStackTrace();
                     }
                     mCardPresenter.onBackSideImageChoosen(bitmap);
+                    new DBHelper(getContext()).getBytes(bitmap);
                     break;
                 case REQUEST_CODE_BARCODE:
                     final IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);

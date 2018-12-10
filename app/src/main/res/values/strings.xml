@@ -8,4 +8,6 @@
     <string name="barcodeContent">Content: </string>
     <string name="barcodeFormat">Format: </string>
     <string name="barcodeNotScanned">Не удалось отсканировать штрих-код</string>
+    <string name="myDataBase">myDataBase</string>
+    <string name="saveCard">Сохранить изменения</string>
 </resources>

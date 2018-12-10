@@ -33,6 +33,7 @@ public class CardPresenter extends MvpPresenter<CardView> {
         getViewState().setBarcode(result);
     }
 
-    public void createUpdateCardDB() {
+    public void createUpdateCard() {
+        getViewState().navigate();
     }
 }
