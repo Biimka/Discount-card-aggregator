@@ -6,6 +6,16 @@
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true">
 
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/includeToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNameCard"/>
+
     <EditText
         android:id="@+id/editTextNameCard"
         android:layout_width="match_parent"
@@ -15,7 +25,7 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollViewCard"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/includeToolbar" />
 
     <ScrollView
         android:id="@+id/scrollViewCard"

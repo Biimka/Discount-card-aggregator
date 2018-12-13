@@ -1,6 +1,9 @@
 package com.startandroid.biimka.discount_card_aggregator.card;
 
 import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
@@ -34,6 +37,9 @@ public class CardPresenter extends MvpPresenter<CardView> {
     }
 
     public void createOrUpdate() {
-        getViewState().navigate();
     }
+
+    public void toPutBundle(@IdRes int idRes, @Nullable Bundle args){getViewState().navigate(idRes, args);}
+
+    public void onToolbarBackPressed(){getViewState().navigateUp();}
 }

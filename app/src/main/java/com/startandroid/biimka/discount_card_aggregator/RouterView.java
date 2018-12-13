@@ -8,5 +8,5 @@ public interface RouterView {
 
     public void navigate(@IdRes int resId, @Nullable Bundle args);
 
-    public void navigate();
+    public void navigateUp();
 }
