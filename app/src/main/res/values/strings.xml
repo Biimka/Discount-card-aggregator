@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Discount-card-aggregator</string>
+    <string name="appName">Discount-card-aggregator</string>
     <string name="cardName">Введите название карты</string>
     <string name="createCard">Добавить карту</string>
     <string name="frontSideCard">Нажмите на изображение, чтобы добавить/изменить фото лицевой стороны карты</string>

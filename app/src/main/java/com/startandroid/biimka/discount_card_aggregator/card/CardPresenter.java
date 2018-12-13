@@ -39,7 +39,11 @@ public class CardPresenter extends MvpPresenter<CardView> {
     public void createOrUpdate() {
     }
 
-    public void toPutBundle(@IdRes int idRes, @Nullable Bundle args){getViewState().navigate(idRes, args);}
+    public void toPutBundle(@IdRes int idRes, @Nullable Bundle args) {
+        getViewState().navigate(idRes, args);
+    }
 
-    public void onToolbarBackPressed(){getViewState().navigateUp();}
+    public void onToolbarBackPressed() {
+        getViewState().navigateUp();
+    }
 }

@@ -11,21 +11,11 @@ public class BaseFragment extends MvpAppCompatFragment implements RouterView {
 
     @Override
     public void navigate(int resId, @Nullable Bundle args) {
-       switch (resId){
-           case R.id.fragmentCardList:
-               Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.fragmentCardList, args);
-               break;
-           case R.id.fragmentCard:
-               Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.fragmentCard, args);
-               break;
-           case R.id.fragmentBarcode:
-               Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.fragmentBarcode, args);
-               break;
-       }
+        Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(resId, args);
     }
 
     @Override
     public void navigateUp() {
-        getActivity().onBackPressed();
+        Navigation.findNavController(getActivity(), R.id.nav_host_fragment).popBackStack();
     }
 }
