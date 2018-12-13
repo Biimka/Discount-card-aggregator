@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Discount-card-aggregator</string>
+    <string name="appName">Discount-card-aggregator</string>
+    <string name="cardName">Введите название карты</string>
+    <string name="createCard">Добавить карту</string>
+    <string name="frontSideCard">Нажмите на изображение, чтобы добавить/изменить фото лицевой стороны карты</string>
+    <string name="backSideCard">Нажмите на изображение, чтобы добавить/изменить фото задней стороны карты</string>
+    <string name="barcode">Нажмите на изображение, чтобы добавить/изменить штрих-код</string>
+    <string name="barcodeContent">Content: </string>
+    <string name="barcodeFormat">Format: </string>
+    <string name="barcodeNotScanned">Не удалось отсканировать штрих-код</string>
+    <string name="saveCard">Сохранить изменения</string>
 </resources>
