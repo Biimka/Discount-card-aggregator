@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentCard"
-        android:name="com.startandroid.biimka.discount_card_aggregator.CardFragment"
+        android:name="com.startandroid.biimka.discount_card_aggregator.card.CardFragment"
         android:label="fragmentCard"
         tools:layout="@layout/fragment_card">
         <action
