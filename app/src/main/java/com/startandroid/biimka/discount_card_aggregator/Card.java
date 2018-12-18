@@ -8,9 +8,9 @@ public class Card {
     private byte[] imageFrontBytes;
     private byte[] imageBackBytes;
     private String formatBarcode;
-    private int contentBarcode;
+    private long contentBarcode;
 
-    public Card(long id, String name, byte[] imageFrontBytes, byte[] imageBackBytes, String formatBarcode, int contentBarcode) {
+    public Card(long id, String name, byte[] imageFrontBytes, byte[] imageBackBytes, String formatBarcode, long contentBarcode) {
         this.id = id;
         this.name = name;
         this.imageFrontBytes = imageFrontBytes;
@@ -51,7 +51,7 @@ public class Card {
         this.imageBackBytes = imageBackBytes;
     }
 
-    public int getContentBarcode() {
+    public long getContentBarcode() {
         return contentBarcode;
     }
 
