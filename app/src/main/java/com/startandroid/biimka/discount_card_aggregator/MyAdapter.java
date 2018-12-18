@@ -22,11 +22,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         notifyDataSetChanged();
     }
 
-    void setListener(Listener listener) {
+    public void setListener(Listener listener) {
         this.listener = listener;
     }
 
-    interface Listener {
+    public interface Listener {
         void onItemClicked(Card card);
 
         void onItemClickedLong(Card card);

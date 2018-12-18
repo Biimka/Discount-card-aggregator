@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentCardList"
-        android:name="com.startandroid.biimka.discount_card_aggregator.CardListFragment"
+        android:name="com.startandroid.biimka.discount_card_aggregator.card_list.CardListFragment"
         android:label="fragmentCardList"
         tools:layout="@layout/fragment_cardlist">
         <action

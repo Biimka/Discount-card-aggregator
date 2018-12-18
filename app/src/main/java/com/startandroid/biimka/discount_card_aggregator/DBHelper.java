@@ -16,13 +16,19 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.execSQL("create table Barcodes("
+                + "id integer primary  key autoincrement,"
+                + "format text,"
+                + "content blob,"
+                + "cardsId" + ");");
+
         sqLiteDatabase.execSQL("create table Cards("
                 + "id integer primary key autoincrement,"
                 + "cardName text,"
                 + "bitmapFront blob,"
                 + "bitmapBack blob,"
-                + "formatBarcode text,"
-                + "contentBarcode integer" + ");");
+                + "barcodesId" + ");");
+
     }
 
     public byte[] getBytes(Bitmap image) {
