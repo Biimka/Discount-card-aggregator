@@ -16,18 +16,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table Barcodes("
-                + "id integer primary  key autoincrement,"
+        sqLiteDatabase.execSQL("create table Barcode("
+                + "id integer primary key autoincrement,"
                 + "format text,"
                 + "content blob,"
-                + "cardsId" + ");");
+                + "cardId integer,"
+                + "FOREIGN KEY (cardId) REFERENCES Card(barcodeId)" + ");");
 
-        sqLiteDatabase.execSQL("create table Cards("
+        sqLiteDatabase.execSQL("create table Card("
                 + "id integer primary key autoincrement,"
                 + "cardName text,"
                 + "bitmapFront blob,"
                 + "bitmapBack blob,"
-                + "barcodesId" + ");");
+                + "barcodeId integer,"
+                + "FOREIGN KEY (barcodeId) REFERENCES Barcode(cardId)" + ");");
 
     }
 
