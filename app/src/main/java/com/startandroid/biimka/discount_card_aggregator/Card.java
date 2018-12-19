@@ -7,15 +7,13 @@ public class Card {
     private String name;
     private byte[] imageFrontBytes;
     private byte[] imageBackBytes;
-    private String formatBarcode;
     private long contentBarcode;
 
-    public Card(long id, String name, byte[] imageFrontBytes, byte[] imageBackBytes, String formatBarcode, long contentBarcode) {
+    public Card(long id, String name, byte[] imageFrontBytes, byte[] imageBackBytes, long contentBarcode) {
         this.id = id;
         this.name = name;
         this.imageFrontBytes = imageFrontBytes;
         this.imageBackBytes = imageBackBytes;
-        this.formatBarcode = formatBarcode;
         this.contentBarcode = contentBarcode;
     }
 
@@ -57,14 +55,6 @@ public class Card {
 
     public void setContentBarcode(int contentBarcode) {
         this.contentBarcode = contentBarcode;
-    }
-
-    public String getFormatBarcode() {
-        return formatBarcode;
-    }
-
-    public void setFormatBarcode(String formatBarcode) {
-        this.formatBarcode = formatBarcode;
     }
 
     @Override
