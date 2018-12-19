@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Discount-card-aggregator</string>
+    <string name="appName">Discount-card-aggregator</string>
+    <string name="myDataBase">myDataBase</string>
 </resources>
