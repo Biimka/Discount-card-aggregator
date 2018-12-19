@@ -14,4 +14,3 @@ public class App extends Application {
         context = this.getApplicationContext();
     }
 }
-
