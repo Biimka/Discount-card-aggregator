@@ -74,15 +74,15 @@ public class CardRepoImpl implements CardRepo {
     }
 
     @Override
-    public void createCard(Card card) {
+    public void createCard(String name, byte[] frontImage, byte[] backImage, long barcode) {
         final ContentValues contentValuesCard = new ContentValues();
-        contentValuesCard.put(CARD_NAME, card.getName());
-        contentValuesCard.put(BITMAP_FRONT, dbHelper.getBytes(card.getImageFrontBytes()));
-        contentValuesCard.put(BITMAP_BACK, dbHelper.getBytes(card.getImageBackBytes()));
+        contentValuesCard.put(CARD_NAME, name);
+        contentValuesCard.put(BITMAP_FRONT, frontImage);
+        contentValuesCard.put(BITMAP_BACK, backImage);
         db.insert(TABLE_CARD, null, contentValuesCard);
 
         final ContentValues contentValuesBarcode = new ContentValues();
-        contentValuesBarcode.put(CONTENT_BARCODE, card.getContentBarcode());
+        contentValuesBarcode.put(CONTENT_BARCODE, barcode);
         db.insert(TABLE_BARCODE, null, contentValuesBarcode);
     }
 
