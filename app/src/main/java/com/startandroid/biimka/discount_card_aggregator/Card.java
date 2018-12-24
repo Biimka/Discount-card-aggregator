@@ -1,15 +1,18 @@
 package com.startandroid.biimka.discount_card_aggregator;
 
+import android.graphics.Bitmap;
+
 import java.util.Objects;
 
 public class Card {
     private long id;
     private String name;
-    private byte[] imageFrontBytes;
-    private byte[] imageBackBytes;
+    private Bitmap imageFrontBytes;
+    private Bitmap imageBackBytes;
     private long contentBarcode;
 
-    public Card(long id, String name, byte[] imageFrontBytes, byte[] imageBackBytes, long contentBarcode) {
+    public Card(long id, String name, Bitmap imageFrontBytes, Bitmap imageBackBytes,
+                long contentBarcode) {
         this.id = id;
         this.name = name;
         this.imageFrontBytes = imageFrontBytes;
@@ -33,19 +36,19 @@ public class Card {
         this.name = name;
     }
 
-    public byte[] getImageFrontBytes() {
+    public Bitmap getImageFrontBytes() {
         return imageFrontBytes;
     }
 
-    public void setImageFrontBytes(byte[] imageFrontBytes) {
+    public void setImageFrontBytes(Bitmap imageFrontBytes) {
         this.imageFrontBytes = imageFrontBytes;
     }
 
-    public byte[] getImageBackBytes() {
+    public Bitmap getImageBackBytes() {
         return imageBackBytes;
     }
 
-    public void setImageBackBytes(byte[] imageBackBytes) {
+    public void setImageBackBytes(Bitmap imageBackBytes) {
         this.imageBackBytes = imageBackBytes;
     }
 
@@ -53,7 +56,7 @@ public class Card {
         return contentBarcode;
     }
 
-    public void setContentBarcode(int contentBarcode) {
+    public void setContentBarcode(long contentBarcode) {
         this.contentBarcode = contentBarcode;
     }
 

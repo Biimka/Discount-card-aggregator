@@ -1,6 +1,5 @@
 package com.startandroid.biimka.discount_card_aggregator;
 
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -65,10 +64,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
-        Bitmap bitmap = new DBHelper(App.context).getBitmap(cards.get(position).getImageFrontBytes());
         myViewHolder.textViewCardName.setText(cards.get(position).getName());
-        myViewHolder.imageFront.setImageBitmap(bitmap);
-
+        myViewHolder.imageFront.setImageBitmap(cards.get(position).getImageFrontBytes());
     }
 
     @Override
