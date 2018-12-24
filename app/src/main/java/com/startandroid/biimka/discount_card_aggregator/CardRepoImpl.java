@@ -100,7 +100,6 @@ public class CardRepoImpl implements CardRepo {
         contentValuesBarcode.put(CONTENT_BARCODE, card.getContentBarcode());
         db.update(TABLE_BARCODE, contentValuesBarcode, ID + " = ?",
                 new String[]{String.valueOf(card.getId())});
-
     }
 
     public void deleteCard(long id) {
