@@ -36,9 +36,6 @@ public class CardPresenter extends MvpPresenter<CardView> {
         getViewState().setBarcode(result);
     }
 
-    public void createOrUpdate() {
-    }
-
     public void toPutBundle(@IdRes int idRes, @Nullable Bundle args) {
         getViewState().navigate(idRes, args);
     }
