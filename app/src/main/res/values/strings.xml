@@ -10,4 +10,6 @@
     <string name="barcodeNotScanned">Не удалось отсканировать штрих-код</string>
     <string name="saveCard">Сохранить изменения</string>
     <string name="myDataBase">myDataBase</string>
+    <string name="edit">Редактировать</string>
+    <string name="delete">Удалить</string>
 </resources>

@@ -3,6 +3,7 @@ package com.startandroid.biimka.discount_card_aggregator.card;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -26,6 +27,9 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.startandroid.biimka.discount_card_aggregator.BaseFragment;
+import com.startandroid.biimka.discount_card_aggregator.Card;
+import com.startandroid.biimka.discount_card_aggregator.CardRepo;
+import com.startandroid.biimka.discount_card_aggregator.CardRepoImpl;
 import com.startandroid.biimka.discount_card_aggregator.FragmentIntentIntegrator;
 import com.startandroid.biimka.discount_card_aggregator.R;
 
@@ -45,14 +49,21 @@ public class CardFragment extends BaseFragment implements CardView {
     private ImageView imageViewBackSideCard;
     private ImageView imageViewBarcode;
 
-    private TextView textViewFormatBarcode;
     private TextView textViewBarcodeContent;
 
     private Button buttonCreateUpdate;
 
+    private CardRepo cardRepo = CardRepoImpl.getInstance();
+
+    private long id = 0;
+    private String name = "";
+    private Bitmap frontImage = null;
+    private Bitmap backImage = null;
+    private long barcode = 0;
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_card, null);
 
         editTextNameCard = rootView.findViewById(R.id.editTextNameCard);
@@ -61,7 +72,6 @@ public class CardFragment extends BaseFragment implements CardView {
         imageViewBackSideCard = rootView.findViewById(R.id.imageViewBackSideCard);
         imageViewBarcode = rootView.findViewById(R.id.imageViewBarcode);
 
-        textViewFormatBarcode = rootView.findViewById(R.id.textViewBarcodeFormat);
         textViewBarcodeContent = rootView.findViewById(R.id.textViewBarcodeContent);
 
         buttonCreateUpdate = rootView.findViewById(R.id.buttonCreateSave);
@@ -77,6 +87,7 @@ public class CardFragment extends BaseFragment implements CardView {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                name = s.toString();
                 editTextNameCard.setSelection(s.toString().length());
                 buttonCreateUpdate.setEnabled(s.length() != 0);
             }
@@ -120,10 +131,36 @@ public class CardFragment extends BaseFragment implements CardView {
             }
         });
 
+        final Bundle bundle = new Bundle();
+        if (bundle.getLong("id") != 0) {
+            id = bundle.getLong("id");
+            final Card card = cardRepo.getCard(id);
+            name = card.getName();
+            frontImage = card.getImageFrontBytes();
+            backImage = card.getImageBackBytes();
+            barcode = card.getContentBarcode();
+
+            buttonCreateUpdate.setText(R.string.saveCard);
+            editTextNameCard.setText(name);
+            imageViewFrontSideCard.setImageBitmap(frontImage);
+            imageViewBackSideCard.setImageBitmap(backImage);
+            textViewBarcodeContent.setText(String.valueOf(barcode));
+        }
+
         buttonCreateUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCardPresenter.createOrUpdate();
+                if (id == 0) {
+                    final CardRepoImpl.DBHelper dbHelper = new CardRepoImpl.DBHelper(getContext());
+                    frontImage = ((BitmapDrawable) imageViewFrontSideCard.getDrawable()).getBitmap();
+                    backImage = ((BitmapDrawable) imageViewFrontSideCard.getDrawable()).getBitmap();
+                    barcode = Long.parseLong(textViewBarcodeContent.getText().toString());
+
+                    cardRepo.createCard(name, dbHelper.getBytes(frontImage), dbHelper.getBytes(backImage), barcode);
+                } else {
+                    cardRepo.updateCard(new Card(id, name, frontImage, backImage, barcode));
+                }
+                mCardPresenter.toPutBundle(R.id.fragmentCardList, null);
             }
         });
         return rootView;
@@ -172,10 +209,9 @@ public class CardFragment extends BaseFragment implements CardView {
     @Override
     public void setBarcode(IntentResult result) {
         if (result != null) {
-            textViewFormatBarcode.setText(getString(R.string.barcodeFormat) + result.getFormatName());
-            textViewBarcodeContent.setText(getString(R.string.barcodeContent) + result.getContents());
+            textViewBarcodeContent.setText(result.getContents());
         } else {
-            textViewFormatBarcode.setText(getString(R.string.barcodeNotScanned));
+            textViewBarcodeContent.setText(getString(R.string.barcodeNotScanned));
         }
     }
 

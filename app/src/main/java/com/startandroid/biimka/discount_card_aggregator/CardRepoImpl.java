@@ -36,22 +36,18 @@ public class CardRepoImpl implements CardRepo {
     }
 
     @Override
-    public List<Card> getCards() {
-        final List<Card> cards = new ArrayList<>();
+    public List<CardListItem> getCards() {
+        final List<CardListItem> cards = new ArrayList<>();
         final Cursor cardsCursor = db.query(TABLE_CARD, null, null,
                 null, null, null, null);
         if (cardsCursor.moveToFirst()) {
             final int idColIndex = cardsCursor.getColumnIndex(ID);
             final int nameColIndex = cardsCursor.getColumnIndex(CARD_NAME);
             final int frontImageColIndex = cardsCursor.getColumnIndex(BITMAP_FRONT);
-            final int backImageColIndex = cardsCursor.getColumnIndex(BITMAP_BACK);
-            final int contentBarcodeColIndex = cardsCursor.getColumnIndex(CARD_ID);
             do {
-                cards.add(new Card(cardsCursor.getInt(idColIndex),
+                cards.add(new CardListItem(cardsCursor.getInt(idColIndex),
                         cardsCursor.getString(nameColIndex),
-                        dbHelper.getBitmap(cardsCursor.getBlob(frontImageColIndex)),
-                        dbHelper.getBitmap(cardsCursor.getBlob(backImageColIndex)),
-                        cardsCursor.getInt(contentBarcodeColIndex)));
+                        dbHelper.getBitmap(cardsCursor.getBlob(frontImageColIndex))));
             } while (cardsCursor.moveToNext());
         }
         cardsCursor.close();
@@ -67,7 +63,7 @@ public class CardRepoImpl implements CardRepo {
                     cardsCursor.getString(cardsCursor.getColumnIndex(CARD_NAME)),
                     dbHelper.getBitmap(cardsCursor.getBlob(cardsCursor.getColumnIndex(BITMAP_FRONT))),
                     dbHelper.getBitmap(cardsCursor.getBlob(cardsCursor.getColumnIndex(BITMAP_BACK))),
-                    cardsCursor.getInt(cardsCursor.getColumnIndex(CARD_ID)));
+                    cardsCursor.getLong(cardsCursor.getColumnIndex(CARD_ID)));
         }
         cardsCursor.close();
         return null;
